@@ -8,6 +8,9 @@ import TemplateSelector from '../components/TemplateSelector'
 import ColorPicker from '../components/ColorPicker'
 import ProfessionSummaryForm from '../components/ProfessionSummaryForm'
 import ExperienceForm from '../components/ExperienceForm'
+import EducationForm from '../components/EducationForm'
+import ProjectForm from '../components/ProjectForm'
+import SkillsForm from '../components/SkillsForm'
 
 const ResumeBuilder = () => {
 
@@ -110,9 +113,43 @@ const ResumeBuilder = () => {
                       professional_summary: data
                     }))} setResumeData={setResumeData} />
                 )}
-                {activeSectionIndex.id === 'experience' && (
-                  <ExperienceForm />
+
+                {activeSections.id === 'experience' && (
+                  <ExperienceForm data={resumeData.experience}
+                    onChange={(data) => setResumeData(prev => ({
+                      ...prev,
+                      experience: data
+                    }))} />
                 )}
+
+                {activeSections.id === 'education' && (
+                  <EducationForm data={resumeData.education}
+                    onChange={(data) => setResumeData(prev => ({
+                      ...prev,
+                      education: data
+                    }))} />
+                )}
+
+                {activeSections.id === 'projects' && (
+                  <ProjectForm data={resumeData.project}
+                    onChange={(data) => setResumeData(prev => ({
+                      ...prev,
+                      project: data
+                    }))} />
+                )}
+
+                {activeSections.id === 'skills' && (
+                  <SkillsForm data={resumeData.skills}
+                    onChange={(data) => setResumeData(prev => ({
+                      ...prev,
+                      skills: data
+                    }))} />
+                )}
+
+
+
+
+
               </div>
             </div>
           </div>
